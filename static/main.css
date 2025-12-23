@@ -593,6 +593,10 @@ section {
   text-align: center;
 }
 
+.skill-nav.hidden {
+  display: none;
+}
+
 .nav-button {
   display: inline-block;
   padding: var(--space-md) var(--space-lg);

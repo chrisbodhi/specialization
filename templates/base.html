@@ -31,7 +31,7 @@
             <!-- Page-specific content goes here -->
             {% endblock %}
 
-            <nav class="skill-nav">
+            <nav class="skill-nav hidden">
                 <button class="nav-button" onclick="showSkill('intro')">
                     Return to Introduction
                 </button>
@@ -57,6 +57,12 @@
                                 link.getAttribute("data-skill") === skillId,
                         );
                     });
+
+                    // Hide nav button when on intro
+                    document.querySelector(".skill-nav").classList.toggle(
+                        "hidden",
+                        skillId === "intro"
+                    );
 
                     if (updateHash) {
                         history.pushState(null, "", "#" + skillId);
