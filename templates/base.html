@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            {% block title %}A Boy's Guide to Human Competence{% endblock %}
+        </title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="/main.css" />
+
+        <style>
+            /* Page-specific overrides can go here */
+        </style>
+
+        {% block extra_css %}{% endblock %}
+    </head>
+    <body>
+        <div class="guide">
+            <header class="hero">
+                <div class="hero-badge">Field Manual</div>
+                <h1>A Boy's Guide to<br />Human Competence</h1>
+                <p class="hero-subtitle">Essential Skills for the Modern Adventurer</p>
+            </header>
+
+            {% block content %}
+            <!-- Page-specific content goes here -->
+            {% endblock %}
+
+            <nav class="skill-nav">
+                <button class="nav-button" onclick="showSkill('intro')">
+                    Return to Introduction
+                </button>
+            </nav>
+        </div>
+
+        <script>
+            function showSkill(skillId, updateHash = true) {
+                const allSkills = document.querySelectorAll(".skill-content");
+                allSkills.forEach((skill) => {
+                    skill.classList.remove("active");
+                });
+
+                const selectedSkill = document.getElementById(skillId);
+                if (selectedSkill) {
+                    selectedSkill.classList.add("active");
+
+                    // Highlight active skill link (clear all if intro)
+                    document.querySelectorAll(".skill-link").forEach((link) => {
+                        link.classList.toggle(
+                            "active",
+                            skillId !== "intro" &&
+                                link.getAttribute("data-skill") === skillId,
+                        );
+                    });
+
+                    if (updateHash) {
+                        history.pushState(null, "", "#" + skillId);
+                    }
+                    const contentDisplay =
+                        document.querySelector(".content-display");
+                    contentDisplay.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                }
+            }
+
+            function showSkillFromHash() {
+                const hash = window.location.hash.slice(1);
+                if (hash) {
+                    showSkill(hash, false);
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const skillLinks = document.querySelectorAll(".skill-link");
+                skillLinks.forEach((link) => {
+                    link.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        const skillId = this.getAttribute("data-skill");
+                        showSkill(skillId);
+                    });
+                });
+
+                // Show skill from URL hash on page load
+                showSkillFromHash();
+            });
+
+            // Handle browser back/forward buttons
+            window.addEventListener("popstate", showSkillFromHash);
+        </script>
+
+        {% block extra_js %}{% endblock %}
+    </body>
+</html>

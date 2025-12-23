@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set skills = get_section(path="skills/_index.md") %}
+<section class="quote-section">
+    <p class="quote-intro">The Foundation of Human Achievement</p>
+    <blockquote class="heinlein-quote">
+        A human being should be able to
+        {% for skill in skills.pages %}
+            <a href="#{{ skill.extra.slug }}" class="skill-link" data-skill="{{ skill.extra.slug }}">
+                {{ skill.extra.quote_text }}
+            </a>{% if not loop.last %}, {% endif %}
+        {% endfor %}
+        . Specialization is for insects.
+    </blockquote>
+</section>
+
+<div class="content-display">
+    <div class="skill-content active" id="intro">
+        {{ section.content | safe }}
+    </div>
+
+    {% for skill in skills.pages %}
+        {% include "skill.html" %}
+    {% endfor %}
+</div>
+{% endblock %}

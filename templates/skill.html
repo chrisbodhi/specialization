@@ -1,0 +1,19 @@
+<div class="skill-content" id="{{ skill.extra.slug }}">
+    <div class="skill-header">
+        <p class="skill-number">Skill No. {{ skill.extra.number }}</p>
+        <h2 class="skill-title">{{ skill.title }}</h2>
+    </div>
+    <div class="skill-body">
+        {{ skill.content | safe }}
+
+        {% if skill.extra.audio %}
+        <div class="audio-section">
+            <div class="audio-label">📻 Audio Instruction</div>
+            <audio controls>
+                <source src="{{ skill.extra.audio }}" type="audio/mpeg">
+                Your browser does not support audio playback.
+            </audio>
+        </div>
+        {% endif %}
+    </div>
+</div>

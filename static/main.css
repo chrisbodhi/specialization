@@ -1,0 +1,740 @@
+/* Tomorrow's Horizon Design System
+ * A retrofuturist design language for minds looking forward
+ */
+
+/* ==========================================================================
+   1. Custom Properties
+   ========================================================================== */
+
+:root {
+  /* Color Palette: Space Age Optimism */
+  --cream: #FAF7F0;
+  --warm-white: #FFF8EE;
+  --paper: #F5EFE4;
+
+  --midnight: #1A1A2E;
+  --ink: #2D2D44;
+  --slate: #4A4A68;
+
+  --atomic-orange: #E85D04;
+  --solar-amber: #F7931E;
+  --horizon-coral: #FF6B4A;
+
+  --stellar-teal: #00A8A8;
+  --sky-cyan: #4ECDC4;
+  --deep-space: #0D7377;
+
+  --accent-gold: #D4A84B;
+
+  /* Typography Scale */
+  --font-display: 'Anybody', sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'SF Mono', 'Consolas', monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.75rem;
+  --text-4xl: 4rem;
+  --text-5xl: 6rem;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 8rem;
+
+  /* Layout */
+  --content-width: 42rem;
+  --wide-width: 64rem;
+  --full-width: 100%;
+
+  /* Effects */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 100px;
+  --radius-circle: 50%;
+
+  --shadow-soft: 0 4px 20px rgba(26, 26, 46, 0.08);
+  --shadow-lifted: 0 8px 40px rgba(26, 26, 46, 0.12);
+  --shadow-dramatic: 0 20px 60px rgba(26, 26, 46, 0.2);
+}
+
+/* ==========================================================================
+   2. Reset & Base
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   3. Typography
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--midnight);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: var(--space-md);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
+}
+
+h3 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+p {
+  margin-bottom: var(--space-md);
+}
+
+a {
+  color: var(--atomic-orange);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--horizon-coral);
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: 600;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--paper);
+  padding: 0.1em 0.3em;
+  border-radius: var(--radius-sm);
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background: var(--midnight);
+  color: var(--cream);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin: var(--space-lg) 0;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* ==========================================================================
+   4. Layout
+   ========================================================================== */
+
+.guide {
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  padding: var(--space-xl);
+}
+
+article {
+  max-width: var(--content-width);
+}
+
+section {
+  margin-bottom: var(--space-2xl);
+}
+
+/* ==========================================================================
+   5. Components
+   ========================================================================== */
+
+/* Hero Header */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+  margin-bottom: var(--space-2xl);
+  background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(232, 93, 4, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--stellar-teal);
+  margin-bottom: var(--space-lg);
+}
+
+.hero-badge::before,
+.hero-badge::after {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--stellar-teal);
+}
+
+.hero h1 {
+  font-size: var(--text-5xl);
+}
+
+.hero-subtitle {
+  font-size: var(--text-xl);
+  color: var(--slate);
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+/* Section Headers */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 2px solid var(--midnight);
+}
+
+.section-number {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--atomic-orange);
+  line-height: 1;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--midnight);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* Buttons */
+.btn {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: var(--space-md) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.btn-primary {
+  background: var(--atomic-orange);
+  color: var(--warm-white);
+}
+
+.btn-primary:hover {
+  background: var(--horizon-coral);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lifted);
+}
+
+.btn-secondary {
+  background: var(--midnight);
+  color: var(--warm-white);
+}
+
+.btn-secondary:hover {
+  background: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lifted);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--midnight);
+  border: 2px solid var(--midnight);
+}
+
+.btn-outline:hover {
+  background: var(--midnight);
+  color: var(--warm-white);
+}
+
+.btn-teal {
+  background: var(--stellar-teal);
+  color: var(--warm-white);
+}
+
+.btn-teal:hover {
+  background: var(--deep-space);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lifted);
+}
+
+/* Blockquote */
+.blockquote {
+  position: relative;
+  padding: var(--space-xl);
+  padding-left: calc(var(--space-xl) + var(--space-lg));
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  margin: var(--space-lg) 0;
+}
+
+.blockquote::before {
+  content: '';
+  position: absolute;
+  left: var(--space-lg);
+  top: var(--space-lg);
+  bottom: var(--space-lg);
+  width: 4px;
+  background: linear-gradient(180deg, var(--atomic-orange), var(--stellar-teal));
+  border-radius: 2px;
+}
+
+.blockquote-text {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-style: italic;
+  color: var(--midnight);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+.blockquote-cite {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--slate);
+}
+
+/* Cards */
+.card {
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lifted);
+}
+
+.card-image {
+  height: 160px;
+  background: linear-gradient(135deg, var(--stellar-teal) 0%, var(--deep-space) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-body {
+  padding: var(--space-lg);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--midnight);
+  margin-bottom: var(--space-sm);
+}
+
+.card-text {
+  font-size: var(--text-sm);
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+/* Warning Box */
+.warning {
+  background: var(--warm-white);
+  border: 2px solid var(--solar-amber);
+  border-left-width: 4px;
+  padding: var(--space-lg);
+  margin: var(--space-lg) 0;
+  border-radius: var(--radius-md);
+}
+
+.warning-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: var(--text-sm);
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-sm);
+  color: var(--atomic-orange);
+}
+
+/* Section Divider */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-lg) 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--midnight), transparent);
+}
+
+.divider-diamond {
+  width: 12px;
+  height: 12px;
+  background: var(--atomic-orange);
+  transform: rotate(45deg);
+}
+
+/* ==========================================================================
+   6. Page-Specific: Skills Guide
+   ========================================================================== */
+
+/* Quote Section */
+.quote-section {
+  margin: var(--space-lg) 0 var(--space-xl);
+}
+
+.quote-intro {
+  font-family: var(--font-display);
+  font-variant: small-caps;
+  font-size: var(--text-sm);
+  letter-spacing: 0.1em;
+  color: var(--stellar-teal);
+  margin-bottom: var(--space-md);
+}
+
+.heinlein-quote {
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  font-style: italic;
+  color: var(--ink);
+}
+
+.skill-link {
+  color: var(--atomic-orange);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--atomic-orange);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.skill-link:hover {
+  color: var(--horizon-coral);
+  border-bottom-style: solid;
+}
+
+.skill-link.active {
+  color: var(--horizon-coral);
+  border-bottom-style: solid;
+  background: rgba(232, 93, 4, 0.1);
+  padding: 0 0.2em;
+  margin: 0 -0.2em;
+}
+
+.quote-attribution {
+  margin-top: var(--space-md);
+  text-align: right;
+  font-size: var(--text-base);
+  font-style: normal;
+  color: var(--slate);
+}
+
+/* Content Display */
+.content-display {
+  margin-top: var(--space-xl);
+  min-height: 400px;
+}
+
+.skill-content {
+  display: none;
+}
+
+.skill-content.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skill Header */
+.skill-header {
+  border-bottom: 2px solid var(--midnight);
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.skill-number {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--stellar-teal);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.skill-title {
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  margin-top: var(--space-sm);
+  color: var(--midnight);
+}
+
+/* Skill Body */
+.skill-body h2 {
+  border-bottom: 1px solid var(--paper);
+  padding-bottom: var(--space-sm);
+}
+
+.skill-body ul {
+  list-style: none;
+  padding-left: var(--space-lg);
+}
+
+.skill-body li {
+  position: relative;
+  margin-bottom: var(--space-sm);
+}
+
+.skill-body li::before {
+  content: "\25B8";
+  position: absolute;
+  left: calc(-1 * var(--space-lg));
+  color: var(--atomic-orange);
+}
+
+/* Navigation */
+.skill-nav {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--paper);
+  text-align: center;
+}
+
+.nav-button {
+  display: inline-block;
+  padding: var(--space-md) var(--space-lg);
+  margin: 0 var(--space-sm);
+  background: var(--stellar-teal);
+  color: var(--warm-white);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+  background: var(--deep-space);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lifted);
+}
+
+/* Sidenote / Margin Notes */
+.sidenote,
+.marginnote {
+  font-size: var(--text-sm);
+  color: var(--slate);
+  line-height: 1.5;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px dashed var(--slate);
+  border-radius: var(--radius-sm);
+}
+
+.sidenote-number {
+  counter-increment: sidenote-counter;
+}
+
+.sidenote-number:after {
+  content: counter(sidenote-counter);
+  font-size: var(--text-xs);
+  color: var(--stellar-teal);
+  position: relative;
+  top: -0.4em;
+  left: 0.1em;
+}
+
+.sidenote:before {
+  content: none;
+}
+
+label.margin-toggle:not(.sidenote-number) {
+  display: none;
+}
+
+input.margin-toggle {
+  display: none;
+}
+
+/* ==========================================================================
+   7. Utilities & Decorative
+   ========================================================================== */
+
+/* Drop Cap */
+.dropcap {
+  float: left;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 0.8;
+  padding-right: var(--space-sm);
+  padding-top: var(--space-xs);
+  color: var(--atomic-orange);
+}
+
+/* Labels */
+.label {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--stellar-teal);
+}
+
+/* ==========================================================================
+   8. Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --text-4xl: 2.5rem;
+    --text-5xl: 3.5rem;
+  }
+
+  .guide {
+    padding: var(--space-lg);
+  }
+
+  .hero {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .hero h1 {
+    font-size: var(--text-3xl);
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .heinlein-quote {
+    font-size: var(--text-base);
+  }
+
+  /* Sidenotes collapse on mobile */
+  label.margin-toggle:not(.sidenote-number) {
+    display: inline;
+    cursor: pointer;
+    color: var(--stellar-teal);
+  }
+
+  .sidenote,
+  .marginnote {
+    display: none;
+  }
+
+  .margin-toggle:checked + .sidenote,
+  .margin-toggle:checked + .marginnote {
+    display: block;
+    float: left;
+    left: var(--space-md);
+    clear: both;
+    width: 95%;
+    margin: var(--space-md) 2.5%;
+    vertical-align: baseline;
+    position: relative;
+    padding: var(--space-md);
+    border: 1px dashed var(--slate);
+    border-radius: var(--radius-sm);
+  }
+}
