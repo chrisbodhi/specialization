@@ -437,6 +437,42 @@ section {
   color: var(--atomic-orange);
 }
 
+/* Principle Box */
+.principle {
+  padding: var(--space-lg);
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--atomic-orange);
+  margin: var(--space-lg) 0;
+}
+
+.principle-number {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  color: rgba(232, 93, 4, 0.15);
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+}
+
+.principle-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--midnight);
+  margin-bottom: var(--space-sm);
+}
+
+.principle-text {
+  font-size: var(--text-sm);
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+.principle-text p:last-child {
+  margin-bottom: 0;
+}
+
 /* Section Divider */
 .section-divider {
   display: flex;

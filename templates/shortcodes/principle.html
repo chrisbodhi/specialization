@@ -1,0 +1,28 @@
+{#
+  Principle shortcode — for core tenets, foundational rules, or key maxims.
+
+  Use this when content naturally takes the form of numbered principles or
+  fundamental rules worth calling out with visual weight. Not a replacement
+  for blockquotes (external voices), sidenotes (tangents), or warnings (cautions).
+
+  Good fit: "The three principles of good knife work..."
+  Bad fit: Forcing content into this shape just to use the component.
+
+  Parameters:
+    - title (required): The principle's heading
+    - number (optional): Display number like "01", "02", etc.
+
+  Usage:
+    {% principle(title="Keep It Sharp") %}
+    A dull knife is more dangerous than a sharp one.
+    {% end %}
+
+    {% principle(title="Keep It Sharp", number="01") %}
+    A dull knife is more dangerous than a sharp one.
+    {% end %}
+#}
+<div class="principle">
+  {% if number %}<div class="principle-number">{{ number }}</div>{% endif %}
+  <h3 class="principle-title">{{ title }}</h3>
+  <div class="principle-text">{{ body | safe }}</div>
+</div>

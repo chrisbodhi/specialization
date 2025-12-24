@@ -53,4 +53,12 @@ Sidenote content here.
 {% warning(title="Title") %}
 Warning content here.
 {% end %}
+
+{% principle(title="Core Tenet") %}
+For foundational rules or key maxims—not a replacement for quotes, sidenotes, or warnings.
+{% end %}
+
+{% principle(title="Core Tenet", number="01") %}
+Optional number for numbered principles.
+{% end %}
 ```
